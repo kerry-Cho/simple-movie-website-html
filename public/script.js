@@ -1,45 +1,43 @@
-//alert("Please Use Desktop View For Better Expeience")
-filterSelection('all');
-function filterSelection(c) {
-  var x, i;
-  x = document.getElementsByClassName('column');
-  if (c == 'all') c = '';
-  for (i = 0; i < x.length; i++) {
-    w3RemoveClass(x[i], 'show');
-    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], 'show');
-  }
-}
+const appendToDOM = (movies) => {
+  const body = document.getElementsByClassName('cards');
+  movies.data.map((movie) => {
+    const a = document.createElement('a');
+    const div = document.createElement('div');
+    div.className = 'column cars show';
 
-function w3AddClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(' ');
-  arr2 = name.split(' ');
-  for (i = 0; i < arr2.length; i++) {
-    if (arr1.indexOf(arr2[i]) == -1) {
-      element.className += ' ' + arr2[i];
-    }
-  }
-}
+    const content = document.createElement('div');
+    content.className = 'content';
 
-function w3RemoveClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(' ');
-  arr2 = name.split(' ');
-  for (i = 0; i < arr2.length; i++) {
-    while (arr1.indexOf(arr2[i]) > -1) {
-      arr1.splice(arr1.indexOf(arr2[i]), 1);
-    }
-  }
-  element.className = arr1.join(' ');
-}
+    const img = document.createElement('img');
+    img.className = 'image';
+    img.src = `/api/uploads/${movie.imagepath}`;
+    img.alt = `${movie.imagepath}`;
+    content.appendChild(img);
 
-// Add active class to the current button (highlight it)
-var btnContainer = document.getElementById('myBtnContainer');
-var btns = btnContainer.getElementsByClassName('btn');
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener('click', function () {
-    var current = document.getElementsByClassName('active');
-    current[0].className = current[0].className.replace(' active', '');
-    this.className += ' active';
+    const h4 = document.createElement('h4');
+    h4.innerText = `${movie.title}`;
+    content.appendChild(h4);
+
+    div.appendChild(content);
+
+    a.href = `info/${movie.id}`;
+    a.appendChild(div);
+
+    body[0].appendChild(a);
   });
-}
+};
+
+const fetchUsers = () => {
+  axios
+    .get('/api/movie/')
+    .then((response) => {
+      const data = response.data;
+      // append to DOM
+      appendToDOM(data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
+fetchUsers();

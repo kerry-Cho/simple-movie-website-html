@@ -78,12 +78,12 @@ function bootstrap() {
       },
     ),
   );
-
   app.use(express.static('public/'));
   app.use('/api', createProxyMiddleware(options));
-  //app.get('/', (req, res) => {
-  //  res.sendFile(`../public/index.html`);
-  //});
+
+  app.get('/info/:id', function (req, res) {
+    res.send('GET request to the homepage');
+  });
 
   const onHealthCheck = async () => {
     // return axios.get(`${apiServerUrl}/health`).then(res=> return res);

@@ -1,24 +1,15 @@
 const updateFile = async (name, description, formData) => {
   try {
-    const response = await fetch('api/uploads', {
-      method: 'POST',
-      body: formData,
-    });
-
-    const data = await response.json();
-
-    const sendData = {
+    const file = await axios.post('/api/uploads', formData);
+    const response = await axios.post('/api/movie', {
       title: name,
       content: description,
-      imagepath: data.filename,
-    };
-    const movie = await fetch('/api/movie', {
-      method: 'POST',
-      body: JSON.stringify(sendData),
+      imagepath: file.data.filename,
       headers: {
         'Content-Type': 'application/json',
       },
     });
+    location.reload();
   } catch (err) {
     console.log(err);
   }
