@@ -1,0 +1,36 @@
+{
+  "name": "simple-movie-website-html",
+  "version": "1.0.0",
+  "description": "a simple movie/video downloading website develope using html/css\r this project have a apache 2.0 license make sure you read it",
+  "main": "script.js",
+  "scripts": {
+    "webpack:dev": "node node_modules/webpack/bin/webpack.js --watch --config ./config/webpack.dev.js",
+    "webpack:prod": "node node_modules/webpack/bin/webpack.js --config ./config/webpack.prod.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevenRathod2/simple-movie-website-html.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DevenRathod2/simple-movie-website-html/issues"
+  },
+  "homepage": "https://github.com/DevenRathod2/simple-movie-website-html#readme",
+  "dependencies": {
+    "@godaddy/terminus": "^4.10.0",
+    "axios": "^0.24.0",
+    "express": "^4.17.2",
+    "http-proxy-middleware": "^2.0.1",
+    "morgan": "^1.10.0",
+    "winston-daily-rotate-file": "^4.5.5"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/morgan": "^1.9.3",
+    "ts-loader": "^9.2.6",
+    "webpack": "^5.66.0",
+    "webpack-cli": "^4.9.1"
+  }
+}
