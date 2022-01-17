@@ -97,24 +97,6 @@ const showDetail = async (e) => {
 
   table.appendChild(tbody);
   contentdiv.appendChild(table);
-
-  //const ul2 = document.createElement('ul');
-  //const liNo2 = document.createElement('li');
-  //const liTitle2 = document.createElement('li');
-  //const liDes2 = document.createElement('li');
-  //const liCreateAt2 = document.createElement('li');
-  //liNo2.innerText = `${response.data.data.id}`;
-  //ul2.appendChild(liNo2);
-  //liTitle2.innerText = `${response.data.data.title}`;
-  //ul2.appendChild(liTitle2);
-  //liDes2.innerText = `${response.data.data.content}`;
-  //ul2.appendChild(liDes2);
-  //liCreateAt2.innerText = `${new Date(
-  //  response.data.data.createdAt,
-  //).toLocaleString('kr', {
-  //  timeZone: 'asia/seoul',
-  //})}`;
-  //ul2.appendChild(liCreateAt2);
   body[0].appendChild(contentdiv);
 };
 
