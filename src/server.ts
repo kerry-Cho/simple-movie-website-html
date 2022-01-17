@@ -2,7 +2,6 @@ import express from 'express';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import { createTerminus } from '@godaddy/terminus';
 import morgan from 'morgan';
-import axios from 'axios';
 
 import { createLogger, format, transports } from 'winston';
 import DailyRotateFile from 'winston-daily-rotate-file';
