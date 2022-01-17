@@ -1,7 +1,7 @@
 const updateFile = async (name, description, formData) => {
   try {
     const file = await axios.post('/api/uploads', formData);
-    const response = await axios.post('/api/movie', {
+    await axios.post('/api/movie', {
       title: name,
       content: description,
       imagepath: file.data.filename,
